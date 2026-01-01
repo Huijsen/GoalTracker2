@@ -1,4 +1,4 @@
-package com.goaltracker
+package casper.goaltracker.V2
 
 import android.os.Build
 import android.os.Bundle

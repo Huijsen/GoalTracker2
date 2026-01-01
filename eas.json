@@ -5,13 +5,16 @@
   },
   "build": {
     "development": {
+      "workflow": "generic",
       "developmentClient": true,
       "distribution": "internal"
     },
     "preview": {
+      "workflow": "generic",
       "distribution": "internal"
     },
     "production": {
+      "workflow": "generic",
       "autoIncrement": true
     }
   },
