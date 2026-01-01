@@ -1,0 +1,43 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Directory voor build/output
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Editor/IDE bestanden
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# MacOS bestanden
+.DS_Store
+
+# Optional npm cache folder
+.npm/
+
+# Optional eslint cache
+.eslintcache
+
+# Expo / EAS specific
+*.expo
+*.eas
