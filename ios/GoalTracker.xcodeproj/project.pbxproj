@@ -369,7 +369,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = org.name.GoalTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = casper.goaltracker.V2;
 				PRODUCT_NAME = GoalTracker;
 				SWIFT_OBJC_BRIDGING_HEADER = "GoalTracker/GoalTracker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -398,7 +398,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = org.name.GoalTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = casper.goaltracker.V2;
 				PRODUCT_NAME = GoalTracker;
 				SWIFT_OBJC_BRIDGING_HEADER = "GoalTracker/GoalTracker-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

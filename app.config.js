@@ -9,15 +9,16 @@ export default ({ config }) => ({
     "expo-font"
   ],
 
-  icon: "./assets/icons/icon.png", // generiek app icon
+  icon: "./assets/icons/icon.png", // generiek
 
   ios: {
     ...config.ios,
     bundleIdentifier: "casper.goaltracker.V2",
     buildNumber: "1",
     supportsTablet: true,
-    icon: "./assets/icons/icon-1024.png",
+    icon: "./assets/icons/icon.png", // klein icon, 1024x1024 mag, EAS resize
     infoPlist: {
+      CFBundleIconName: "AppIcon",        // ✅ Nodig voor iOS 11+
       ITSAppUsesNonExemptEncryption: false,
     },
   },
@@ -30,9 +31,10 @@ export default ({ config }) => ({
       backgroundColor: "#ffffff",
     },
   },
-    "extra": {
-      "eas": {
-        "projectId": "b37e6859-a0d6-4481-b9ec-027725387425"
-      }
+
+  extra: {
+    eas: {
+      projectId: "b37e6859-a0d6-4481-b9ec-027725387425"
     }
+  }
 });
