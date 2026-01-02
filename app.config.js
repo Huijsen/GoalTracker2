@@ -30,10 +30,4 @@ export default ({ config }) => ({
       backgroundColor: "#ffffff",
     },
   },
-
-  extra: {
-    eas: {
-      projectId: "b37e6859-a0d6-4481-b9ec-02772538742",
-    },
-  },
 });
