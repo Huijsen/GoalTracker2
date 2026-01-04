@@ -1,3 +1,6 @@
+// RENE Added import
+import { runMatching } from "./matching";
+
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import {
   View,
@@ -1564,7 +1567,8 @@ export default function App() {
     return Array.from(nameBest.values());
   };
 
-  // Run algorithm whenever userId, tasks, or goals change
+  // Run algorithm whenever userId, tasks, or goals change'
+    
     useEffect(() => {
     if (!userId || !tasks || !goals) return;
 
@@ -1610,16 +1614,22 @@ export default function App() {
         setAllGroupsDB(groupsData);
 
         // Algorithm API call can stay as fetch if it’s server-side
+        // RENE Change and comment out fetch to direct function call
+        const algData = await runMatching(userData);
+        /*
         const algRes = await fetch("http://192.168.1.2:5000/algorithm", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ question: "Which user should be matched?" }),
         });
         const algData = await algRes.json();
+        */
         setAlgorithmResult(algData);
-
-        const myId = userData.id;
-        const myRankings = algData.combined_best_to_worst?.[myId] || [];
+        console.log("✅ Algorithm data received:", algData);
+        
+        // RENE const myId = userData.id;
+        // RENE regel hieronder myId vervangen door userId
+        const myRankings = algData.combined_best_to_worst?.[userId] || [];
         const myGroupRankings = myRankings.filter(item => item.type === "group");
         setMyRanking(myGroupRankings);
 
@@ -1643,7 +1653,7 @@ export default function App() {
         }));
 
         // Build ranked items from algorithm
-        const rankedItems = algData.combined_best_to_worst[userId]
+        const rankedItems = myRankings //RENE algData.combined_best_to_worst[userId]
             .map(r => {
             if (r.type === "group") {
                 const g = groupsData.find(g => g.id === r.id);
@@ -1751,8 +1761,9 @@ export default function App() {
 
   // Use a fixed test user ID
   useEffect(() => {
-    const fixedId = generateUniqueId();; // replace with the user ID from your DB
-    setUserId(fixedId);
+    generateUniqueId(); // ✅ GOED: De functie doet zelf al setUserId("12345...")
+    //RENE const fixedId = generateUniqueId();; // replace with the user ID from your DB
+    //RENE setUserId(fixedId);
   }, []);
   
     const generateUniqueId = async () => {
@@ -1927,19 +1938,21 @@ export default function App() {
       Object.keys(allChats).forEach((pageName) => {
         const chat = allChats[pageName];
 
-        console.log("📡 Checking chat:", pageName, chat);
+        // RENE console.log("📡 Checking chat:", pageName, chat);
 
         const allowed = chat.allowedUsers || [];
         const addedBy = chat.addedBy;
         const addedUserId = chat.addedUserId;
 
         // Only continue if this chat involves the current user
+        /* RENE Disabled for now to allow all chats to be processed
         if (!allowed.includes(mlUser.id)) {
           console.log("⛔ User not in allowedUsers, skipping:", mlUser.id);
           return;
         }
+        */
 
-        console.log("✅ User is part of this chat:", mlUser.id);
+        // RENE console.log("✅ User is part of this chat:", mlUser.id);
 
         // Determine the "other" user for person chats
         const otherUserId =
@@ -1950,7 +1963,7 @@ export default function App() {
         // Check if THIS chat already exists locally
         const existingChat = items.find((i) => i.page === pageName);
         if (existingChat) {
-          console.log("🔁 Chat already exists locally, skipping:", pageName);
+          //RENE console.log("🔁 Chat already exists locally, skipping:", pageName);
           return;
         }
 
@@ -2099,7 +2112,7 @@ export default function App() {
       // moveItem('gymboys', 'archived'); // Moves Gymboys to archived
 
   useEffect(() => {
-    console.log("🧩 Current items:", items);
+    // RENE console.log("🧩 Current items:", items);
   }, [items]);
 
   // GOALS:
