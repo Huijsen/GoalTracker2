@@ -1060,6 +1060,11 @@ function calculateWeekStreak(dates, completionsPerWeek) {
 }
 
 export default function App() {
+  // RENE TEST ASYNC STORAGE
+  AsyncStorage.setItem('test', 'ok')
+  .then(() => console.log('AsyncStorage works!'))
+  .catch(e => console.log('Error:', e));
+
   const [tasks, setTasks] = useState([
     {
       text: 'Goal - Workout',
