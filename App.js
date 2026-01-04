@@ -1056,42 +1056,7 @@ function calculateWeekStreak(dates, completionsPerWeek) {
   return { weekStreak, longestWeekStreak };
 }
 
-
-// MAIN APP
 export default function App() {
-
-  // -- TEST RENE --
-  useEffect(() => {
-    const testAsyncStorage = async () => {
-      try {
-        // Opslaan van een testwaarde
-        await AsyncStorage.setItem('test', 'ok');
-        console.log('✅ AsyncStorage setItem works!');
-
-        // Ophalen van de testwaarde
-        const value = await AsyncStorage.getItem('test');
-        console.log('✅ AsyncStorage getItem works! Stored value:', value);
-      } catch (e) {
-        console.log('❌ AsyncStorage error:', e);
-      }
-    };
-
-    testAsyncStorage();
-  }, []);
-
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Text>AsyncStorage Test — check console logs</Text>
-    </View>
-  );
-  // -- EIND TEST RENE --
-  
   const [tasks, setTasks] = useState([
     {
       text: 'Goal - Workout',
